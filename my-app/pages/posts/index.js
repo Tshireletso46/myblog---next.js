@@ -1,5 +1,5 @@
 import AllPosts from "@/components/posts/all-posts";
-import { getALLPosts } from "../../lib/posts-utils";
+import { getAllPosts } from "../../lib/posts-utils";
 import { Fragment } from "react";
 import Head from "next/head";
 
@@ -21,7 +21,7 @@ function AllPostPage(props) {
 }
 
 export function getStaticProps () {
-  const allPosts = getALLPosts();
+  const allPosts = getAllPosts();
 
   return {
     props: {

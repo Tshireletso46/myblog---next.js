@@ -1,7 +1,7 @@
 import classes from './all-posts.module.css'
 import PostGrid from './posts-grid';
 
-function AllPosts() {
+function AllPosts(props) {
 
     return(
         <section className={classes.posts}>

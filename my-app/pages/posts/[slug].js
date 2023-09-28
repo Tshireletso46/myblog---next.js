@@ -1,21 +1,21 @@
-import Head from 'next/head';
-import { Fragment } from 'react';
+import { Fragment } from "react";
+import Head from "next/head";
 
-import PostContent from '@/components/posts/post-datail/post-content';
-import { getPostData, getPostsFiles } from '../../lib/posts-util';
+import PostContent from "../../components/posts/post-datail/post-content";
+import { getPostData, getPostsFiles } from "../../lib/posts-utils";
 
 function PostDetailPage(props) {
-  return (
+  return ( 
     <Fragment>
       <Head>
         <title>{props.post.title}</title>
-        <meta name='description' content={props.post.excerpt} />
+        <meta name='description' content={props.post.exerpt}/>
       </Head>
-      <PostContent post={props.post} />
-    </Fragment>
-  );
+  <PostContent post={props.post} />
+  </Fragment>
+  )
+ 
 }
-
 export function getStaticProps(context) {
   const { params } = context;
   const { slug } = params;
@@ -31,14 +31,13 @@ export function getStaticProps(context) {
 }
 
 export function getStaticPaths() {
-  const postFilenames = getPostsFiles();
+  const postFileNames = getPostsFiles();
 
-  const slugs = postFilenames.map((fileName) => fileName.replace(/\.md$/, ''));
-
+  const slugs = postFileNames.map((fileName) => fileName.replace(/\.md$/, ""));
+  
   return {
     paths: slugs.map((slug) => ({ params: { slug: slug } })),
     fallback: false,
   };
 }
-
-export default PostDetailPage;
+export default PostDetailPage;
